@@ -1,0 +1,14 @@
+{
+  "name": "product-catalog-server",
+  "version": "1.0.0",
+  "description": "Backend for Product Catalog",
+  "main": "index.js",
+  "author": "haruelrovix <surat@havit.web.id>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.6.0"
+  }
+}
