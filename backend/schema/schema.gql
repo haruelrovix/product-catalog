@@ -34,10 +34,10 @@ module.exports = `
   # query for types
   type Query {
     # Return a catalogue by their id
-    catalogue(id: ID): Catalogue
+    catalogue(id: ID): Catalogue!
 
     # Return a product by its id
-    product(id: ID): Product
+    product(id: ID): Product!
 
     # Hello World!
     hello(name: String): String!

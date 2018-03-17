@@ -2,16 +2,8 @@ import { GraphQLServer } from 'graphql-yoga';
 import { Engine } from 'apollo-engine';
 import compression from 'compression';
 
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-  }
-`
-const resolvers = {
-  Query: {
-    hello: (_, { name }) => `Hello ${name || 'World'}`,
-  },
-};
+import { typeDefs } from '../schema';
+import { resolvers } from '../resolvers';
 
 const server = new GraphQLServer({ typeDefs, resolvers });
 
