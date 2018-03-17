@@ -6,11 +6,19 @@
   "author": "haruelrovix <surat@havit.web.id>",
   "license": "MIT",
   "scripts": {
-    "start": "node ."
+    "start": "nodemon lib/index.js --exec babel-node",
+    "build": "babel lib -d dist",
+    "serve": "node dist/index.js"
   },
   "dependencies": {
     "apollo-engine": "0.8.5",
     "compression": "1.7.1",
     "graphql-yoga": "^1.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "nodemon": "^1.17.2"
   }
 }
