@@ -1,0 +1,45 @@
+module.exports = `
+  # a price entity consist of amount and currency
+  type Price {
+    amount: Int!
+    currency: String!
+  }
+
+  # an image entity
+  type Image {
+    id: Int!
+    url: String!
+    width: Int
+    height: Int
+  }
+
+  # a product entity
+  type Product {
+    id: ID!
+    title: String!
+    quantity: Int!
+    price: Price!
+    category: String!
+    images: [Image]
+  }
+
+  # a catalogue contains products
+  type Catalogue {
+    id: ID!
+    items: [Product]
+    title: String!
+    metaTitle: String
+  }
+
+  # query for types
+  type Query {
+    # Return a catalogue by their id
+    catalogue(id: ID): Catalogue
+
+    # Return a product by its id
+    product(id: ID): Product
+
+    # Hello World!
+    hello(name: String): String!
+  }
+`;
