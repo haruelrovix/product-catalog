@@ -5,6 +5,8 @@
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
+		"ios": "react-native run-ios",
+		"android": "react-native run-android",
 		"web:build:vendor-dev": "rm -rf web/vendor-dev; NODE_ENV=development webpack --config web/vendor.webpack.config.js || rm -rf web/vendor-dev",
 		"web": "[ -d web/vendor-dev ] || npm run web:build:vendor-dev && NODE_ENV=development webpack-dev-server -d --host 0.0.0.0 --port 3000 --config web/webpack.config.js --inline --hot --colors",
 		"web:clean": "rm -rf web/vendor web/vendor-dev web/build",
