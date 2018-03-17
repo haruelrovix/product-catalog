@@ -3,5 +3,8 @@
     "es2015",
     "stage-2"
   ],
+  "ignore": [
+    "schema/*.spec.js"
+  ],
   "plugins": []
 }

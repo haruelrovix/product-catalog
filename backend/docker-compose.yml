@@ -1,0 +1,14 @@
+version: "2"
+services:
+  ms-product-catalog:
+    image: "node:alpine"
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - APOLLO_ENGINE_KEY=service:haruelrovix-0909:e6F392dx_lr88otuhrXRyw
+    volumes:
+     - ./:/usr/src/app
+    ports:
+      - "5000:5000"
+    command: "yarn serve"
