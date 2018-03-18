@@ -17,8 +17,7 @@ import { ReduxCache, apolloReducer } from 'apollo-cache-redux';
 import ReduxLink from 'apollo-link-redux';
 
 import App from './containers/app/App.container';
-
-const URL = 'localhost:5000'; // set your comp's url here
+import apolloClient from './services/apollo';
 
 const store = createStore(
   combineReducers({
@@ -28,24 +27,8 @@ const store = createStore(
   composeWithDevTools(),
 );
 
-const cache = new ReduxCache({ store });
-
-const reduxLink = new ReduxLink(store);
-
-const httpLink = createHttpLink({ uri: `http://${URL}` });
-
-const link = ApolloLink.from([
-  reduxLink,
-  httpLink,
-]);
-
-export const client = new ApolloClient({
-  link,
-  cache,
-});
-
 const Root = () => (
-  <ApolloProvider client={client}>
+  <ApolloProvider client={apolloClient}>
     <Provider store={store}>
       <App />
     </Provider>
