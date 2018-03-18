@@ -50,7 +50,7 @@ export const client = new ApolloClient({
 
 const platformText = { ios: 'iOS', android: 'Android', web: 'Web' }
 
-export default class ExampleApp extends Component {
+export default class Root extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
