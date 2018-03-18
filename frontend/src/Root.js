@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -48,31 +48,6 @@ export const client = new ApolloClient({
   cache,
 });
 
-const platformText = { ios: 'iOS', android: 'Android', web: 'Web' }
-
-export default class Root extends Component {
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <Provider store={store}>
-          <View style={styles.container}>
-            <Text style={styles.welcome}>
-              Welcome to React Native! ({platformText[Platform.OS]})
-            </Text>
-            <Text style={styles.instructions}>
-              To get started, edit index.android.js
-            </Text>
-            <Text style={styles.instructions}>
-              Double tap R on your keyboard to reload,{'\n'}
-              Shake or press menu button for dev menu
-            </Text>
-          </View>
-        </Provider>
-      </ApolloProvider>
-    );
-  }
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -91,3 +66,26 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+const platformText = { ios: 'iOS', android: 'Android', web: 'Web' };
+
+const Root = () => (
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          Welcome to React Native! ({platformText[Platform.OS]})
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu
+        </Text>
+      </View>
+    </Provider>
+  </ApolloProvider>
+);
+
+export default Root;

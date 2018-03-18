@@ -1,13 +1,12 @@
 import compose from 'recompose/compose';
 import gql from 'graphql-tag';
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { graphql } from 'react-apollo';
 
-import AppView from './App.component';
+import App from './App.component';
 
 const AppContainer = props => (
-  <AppView {...props} />
+  <App {...props} />
 );
 
 const getCatalogQuery = gql`
@@ -34,6 +33,4 @@ const getCatalogQuery = gql`
   }
 `;
 
-export default compose(
-  graphql(getCatalogQuery)
-)(AppContainer);
+export default compose(graphql(getCatalogQuery))(AppContainer);

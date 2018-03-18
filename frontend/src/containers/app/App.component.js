@@ -1,19 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 
-export class AppView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { loading, catalogue } = this.props.data;
-    return (
-      loading ?
+const App = (props) => {
+  const { loading, catalogue } = props.data;
+  return (
+    loading ?
       <Text>Loading...</Text> :
       <Text>{catalogue.title}</Text>
-    );
-  }
-}
+  );
+};
 
-export default AppView;
+App.propTypes = {
+  data: PropTypes.shape({
+    catalogue: PropTypes.shape({
+      title: PropTypes.string
+    }),
+    loading: PropTypes.bool,
+  }),
+};
+
+App.defaultProps = {
+  data: {
+    catalogue: {
+      title: '',
+    },
+    loading: false,
+  },
+};
+
+export default App;
