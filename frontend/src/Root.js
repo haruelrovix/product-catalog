@@ -6,15 +6,11 @@
 
 import React from 'react';
 
-import { ApolloClient } from 'apollo-client';
-import { ApolloLink } from 'apollo-link';
 import { ApolloProvider } from 'react-apollo';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createHttpLink } from 'apollo-link-http';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { ReduxCache, apolloReducer } from 'apollo-cache-redux';
-import ReduxLink from 'apollo-link-redux';
+import { apolloReducer } from 'apollo-cache-redux';
 
 import App from './containers/app/App.container';
 import apolloClient from './services/apollo';
