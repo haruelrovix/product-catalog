@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
-import { Text } from 'react-native';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import configureStore from './redux/store/configureStore';
 import { history } from './redux/store/configureStore';
 import apolloClient from './services/apollo';
+import App from './containers/app/App.container';
 
 const store = configureStore();
 
@@ -19,7 +19,7 @@ class Root extends Component {
           <div>
             <ConnectedRouter history={history}>
               <Switch>
-                <Text>Web!</Text>
+                <App />
               </Switch>
             </ConnectedRouter>
           </div>
