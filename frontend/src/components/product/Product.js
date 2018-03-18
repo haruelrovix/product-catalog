@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
+
+import styles from './Product.styles';
 
 const Product = ({ item }) => (
-  <View>
-    <Text>{item.title}</Text>
+  <View style={styles.container}>
+    <Image source={{ uri: item.images[0].url }} style={styles.image} />
+    <View style={styles.description}>
+      <Text>{item.title}</Text>
+      <Text style={styles.price}>
+        {new Intl.NumberFormat('id-ID').format(item.price.amount)}
+      </Text>
+    </View>
   </View>
 );
 

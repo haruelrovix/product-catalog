@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 
 import Catalogue from '../../components/catalogue/Catalogue';
+import styles from './App.styles';
 
 const App = (props) => {
   const { loading, catalogue } = props.data;
   return (
-    <View>
+    <View style={styles.container}>
       {loading && <Text>Loading...</Text>}
       {!loading && catalogue && <Catalogue {...catalogue} />}
     </View>
