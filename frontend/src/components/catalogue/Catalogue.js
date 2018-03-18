@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
+import FlatList from 'FlatList';
 
 import Product from '../product/Product';
 
@@ -8,9 +8,9 @@ const renderProduct = props => (
   <Product {...props} />
 );
 
-const Catalogue = props => (
+const Catalogue = ({ items }) => (
   <FlatList
-    data={props.items}
+    data={items}
     renderItem={renderProduct}
     keyExtractor={item => item.id}
   />
