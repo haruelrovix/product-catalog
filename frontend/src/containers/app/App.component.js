@@ -14,7 +14,7 @@ const App = (props) => {
 App.propTypes = {
   data: PropTypes.shape({
     catalogue: PropTypes.shape({
-      title: PropTypes.string
+      title: PropTypes.string,
     }),
     loading: PropTypes.bool,
   }),
