@@ -11,7 +11,7 @@ import { apolloReducer } from 'apollo-cache-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, combineReducers } from 'redux';
 import createMemoryHistory from 'history/createMemoryHistory';
-import { Router, Route, Switch } from 'react-router-native';
+import { BackButton, Router, Route, Switch } from 'react-router-native';
 import { Provider } from 'react-redux';
 
 import apolloClient from './services/apollo';
@@ -35,6 +35,7 @@ const Root = () => (
         <Switch>
           <Route exact path="/" component={App} />
           <Route path="/product/:id" component={DetailProduct} />
+          <BackButton />
         </Switch>
       </Router>
     </Provider>
