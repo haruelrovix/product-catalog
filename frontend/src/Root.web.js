@@ -12,16 +12,16 @@ const store = configureStore();
 
 const Root = () => (
   <div>
-    <Provider store={store}>
-      <ApolloProvider client={apolloClient}>
+    <ApolloProvider client={apolloClient}>
+      <Provider store={store}>
         <Router history={history}>
           <Switch>
             <Route exact path="/" component={App} />
             <Route path="/product/:id" component={DetailProduct} />
           </Switch>
         </Router>
-      </ApolloProvider>
-    </Provider>
+      </Provider>
+    </ApolloProvider>
   </div>
 );
 
