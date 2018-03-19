@@ -6,6 +6,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import configureStore, { history } from './redux/store/configureStore';
 import apolloClient from './services/apollo';
 import App from './containers/app/App.container';
+import DetailProduct from './containers/DetailProduct/DetailProduct.container';
 
 const store = configureStore();
 
@@ -15,8 +16,8 @@ const Root = () => (
       <ApolloProvider client={apolloClient}>
         <Router history={history}>
           <Switch>
-            <Route path="/" component={App} />
-            <Route path="/:id" component={App} />
+            <Route exact path="/" component={App} />
+            <Route path="/product/:id" component={DetailProduct} />
           </Switch>
         </Router>
       </ApolloProvider>

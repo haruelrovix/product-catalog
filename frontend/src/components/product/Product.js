@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Text, View } from 'react-native';
-import { Link } from 'react-router-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 
 import styles from './Product.styles';
 
-const Product = ({ item }) => (
+const Product = ({ item, onPressItem }) => (
   <View style={styles.container}>
-    <Link to={{ pathname: `/${item.id}` }}>
+    <TouchableOpacity
+      disabled={!onPressItem}
+      onPress={onPressItem && onPressItem(item)}
+    >
       <Image source={{ uri: item.images[0].url }} style={styles.image} />
-    </Link>
+    </TouchableOpacity>
     <View style={styles.description}>
       <Text>{item.title}</Text>
       <Text style={styles.price}>
@@ -25,6 +27,7 @@ Product.propTypes = {
     category: PropTypes.string,
     id: PropTypes.string,
   }),
+  onPressItem: PropTypes.func,
 };
 
 Product.defaultProps = {
@@ -33,6 +36,7 @@ Product.defaultProps = {
     title: '',
     category: '',
   },
+  onPressItem: null,
 };
 
 export default Product;

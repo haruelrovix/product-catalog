@@ -10,7 +10,10 @@ const App = (props) => {
   return (
     <View style={styles.container}>
       {loading && <Text>Loading...</Text>}
-      {!loading && catalogue && <Catalogue {...catalogue} />}
+      {
+        !loading && catalogue &&
+        <Catalogue catalogue={catalogue} {...props} />
+      }
     </View>
   );
 };

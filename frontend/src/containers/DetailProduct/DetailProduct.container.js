@@ -21,7 +21,7 @@ const getProductQuery = gql`
     }
     category
     images {
-			id
+      id
       url
     }
   }
