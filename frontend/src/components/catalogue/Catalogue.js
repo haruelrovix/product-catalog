@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FlatList from 'FlatList';
 import { View } from 'react-native';
-import get from 'lodash/get';
+import get from 'lodash.get';
 
 import styles from './Catalogue.styles';
 import Product from '../product/Product';
