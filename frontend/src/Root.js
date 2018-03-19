@@ -7,10 +7,11 @@
 import React from 'react';
 
 import { ApolloProvider } from 'react-apollo';
+import { apolloReducer } from 'apollo-cache-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, combineReducers } from 'redux';
+import { NativeRouter } from 'react-router-native';
 import { Provider } from 'react-redux';
-import { apolloReducer } from 'apollo-cache-redux';
 
 import App from './containers/app/App.container';
 import apolloClient from './services/apollo';
@@ -26,7 +27,9 @@ const store = createStore(
 const Root = () => (
   <ApolloProvider client={apolloClient}>
     <Provider store={store}>
-      <App />
+      <NativeRouter>
+        <App />
+      </NativeRouter>
     </Provider>
   </ApolloProvider>
 );

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FlatList from 'FlatList';
+import { View } from 'react-native';
 
+import styles from './Catalogue.styles';
 import Product from '../product/Product';
 
 const renderProduct = props => (
@@ -9,11 +11,13 @@ const renderProduct = props => (
 );
 
 const Catalogue = ({ items }) => (
-  <FlatList
-    data={items}
-    renderItem={renderProduct}
-    keyExtractor={item => item.id}
-  />
+  <View style={styles.container}>
+    <FlatList
+      data={items}
+      renderItem={renderProduct}
+      keyExtractor={item => item.id}
+    />
+  </View>
 );
 
 Catalogue.propTypes = {
