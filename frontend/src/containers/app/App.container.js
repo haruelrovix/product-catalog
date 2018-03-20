@@ -11,22 +11,24 @@ const AppContainer = props => (
 
 const getCatalogQuery = gql`
   query GetCatalogue {
-    catalogue {
+    catalogue(amount: 5, offset: 0) {
       id
       title
       metaTitle
-      items {
-        id
-        title
-        quantity
-        price {
-          amount
-          currency
-        }
-        category
-        images {
+      product {
+        items {
           id
-          url
+          slug
+          title
+          quantity
+          price {
+            amount
+            currency
+          }
+          category
+          images {
+            fullUrl
+          }
         }
       }
     }

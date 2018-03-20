@@ -1,7 +1,7 @@
 import { Dimensions, Platform, StyleSheet } from 'react-native';
 
 const { width } = Dimensions.get('window');
-const imageSize = Platform.OS === 'web' ? 470 : width - 10;
+const size = Platform.OS === 'web' ? 470 : width - 10;
 
 export default {
   container: {
@@ -14,8 +14,8 @@ export default {
   },
   image: {
     marginTop: 5,
-    height: imageSize,
-    width: imageSize,
+    height: size,
+    width: size,
   },
   description: {
     flexDirection: 'column',
@@ -26,5 +26,16 @@ export default {
   price: {
     color: '#4a4a4a',
     letterSpacing: -0.2,
+  },
+  markdownContainer: {
+    borderColor: '#00000050',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    width: size,
+    paddingHorizontal: 5,
+    paddingVertical: 15,
+  },
+  markdown: {
+    color: '#4a4a4a',
+    fontSize: '80%',
   },
 };

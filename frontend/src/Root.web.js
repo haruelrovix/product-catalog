@@ -17,7 +17,7 @@ const Root = () => (
         <Router history={history}>
           <Switch>
             <Route exact path="/" component={App} />
-            <Route path="/product/:id" component={DetailProduct} />
+            <Route path="/:slug" component={DetailProduct} />
           </Switch>
         </Router>
       </Provider>

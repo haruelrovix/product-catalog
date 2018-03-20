@@ -9,7 +9,10 @@ import Product from '../product/Product';
 
 class Catalogue extends Component {
   onPressItem = item => () => {
-    this.props.history.push(`/product/${item.id}`);
+    this.props.history.push({
+      pathname: `/${item.slug}`,
+      product: { id: item.id },
+    });
   }
 
   renderProduct = ({ item }) => (
@@ -20,7 +23,7 @@ class Catalogue extends Component {
   );
 
   render() {
-    const items = get(this, 'props.catalogue.items', []);
+    const items = get(this, 'props.catalogue.product.items', []);
 
     return (
       <View style={styles.container}>

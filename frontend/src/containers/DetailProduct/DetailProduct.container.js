@@ -10,22 +10,35 @@ const DetailProductContainer = props => (
 );
 
 const getProductQuery = gql`
-  query GetProduct {
-    product {
-    id
-    title
-    quantity
-    price {
-      amount
-      currency
-    }
-    category
-    images {
+  query GetProduct($id: ID) {
+    product(id: $id) {
       id
-      url
+      title
+      descriptionMarkdown
+      quantity
+      price {
+        amount
+        currency
+      }
+      category
+      images {
+        fullUrl
+      }
     }
-  }
   }
 `;
 
-export default compose(graphql(getProductQuery))(DetailProductContainer);
+const getProductQueryOptions = {
+  options: ({ location }) => {
+    const { product, pathname } = location;
+    const id = product ? product.id : pathname;
+
+    return {
+      variables: {
+        id,
+      },
+    };
+  },
+};
+
+export default compose(graphql(getProductQuery, getProductQueryOptions))(DetailProductContainer);
