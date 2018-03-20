@@ -1,9 +1,9 @@
-import { graphql } from 'graphql';
-import chai from 'chai';
-import { makeExecutableSchema } from 'graphql-tools';
+const { graphql } = require('graphql');
+const chai = require('chai');
+const { makeExecutableSchema } = require('graphql-tools');
 
-import { typeDefs } from './index';
-import { resolvers } from '../resolvers';
+const { typeDefs } = require('./index');
+const { resolvers } = require('../resolvers');
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -16,10 +16,12 @@ describe('Schema', () => {
   // Tests Product
   it('Allows us to query Product', () => {
     const query = `
-      query ProductQuery {
-        product {
+      query ProductQuery($id: ID) {
+        product(id: $id) {
           id
           title
+          slug
+          descriptionMarkdown
           quantity
           price {
             amount
@@ -34,10 +36,12 @@ describe('Schema', () => {
       }
     `;
 
-    return graphql(schema, query)
+    const params = { id: 'd9d2ba40-a1a9-4377-b3a0-cae50216e8f1' };
+    return graphql(schema, query, null, null, params)
       .then(({ data }) => {
         expect(data.product).to.have.all.keys([
-          'id', 'title', 'category', 'images', 'quantity', 'price',
+          'id', 'title', 'slug', 'descriptionMarkdown',
+          'category', 'images', 'quantity', 'price',
         ]);
       });
   });

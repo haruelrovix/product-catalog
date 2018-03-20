@@ -6,7 +6,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
-    'plugin:node/recommended',
+    'plugin:node/recommended'
   ],
   parser: 'babel-eslint',
   plugins: [
@@ -14,6 +14,7 @@ module.exports = {
     'import'
   ],
   rules: {
-    'node/no-unsupported-features': 0
+    'node/no-unsupported-features': 0,
+    'node/no-unpublished-require': 0
   }
 };
