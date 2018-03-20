@@ -1,4 +1,4 @@
-import catalogue from '../mock';
+const { catalogue } = require('../mock');
 
 const resolvers = {
   Query: {
