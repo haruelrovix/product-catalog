@@ -1,39 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FlatList from 'FlatList';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Platform, View } from 'react-native';
 import get from 'lodash.get';
 
 import styles from './Catalogue.styles';
 import Product from '../product/Product';
 
 class Catalogue extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoadingMore: false,
-    };
-  }
-
   onPressItem = item => () => {
     this.props.history.push({
       pathname: `/${item.slug}`,
       product: { id: item.id },
-    });
-  }
-
-  loadMore = () => {
-    this.setState({ isLoadingMore: true });
-
-    const remaining = get(this, 'props.catalogue.product.remaining', 0);
-    if (remaining <= 0) {
-      this.setState({ isLoadingMore: false });
-      return;
-    }
-
-    this.props.loadMore().then(() => {
-      this.setState({ isLoadingMore: false });
     });
   }
 
@@ -45,8 +23,8 @@ class Catalogue extends Component {
   )
 
   renderFooter = () => (
-    this.state.isLoadingMore &&
-      <View style={{ flex: 1, padding: 10 }}>
+    this.props.isLoadingMore &&
+      <View style={styles.loader}>
         <ActivityIndicator size="small" />
       </View>
   )
@@ -60,9 +38,10 @@ class Catalogue extends Component {
           data={items}
           keyExtractor={(item, index) => index}
           renderItem={this.renderProduct}
-          onEndReached={this.loadMore}
+          onEndReached={Platform.OS !== 'web' ? this.props.loadMore : null}
           onEndReachedThreshold={0.5}
           ListFooterComponent={this.renderFooter}
+          enableEmptySections
         />
       </View>
     );
@@ -74,6 +53,7 @@ Catalogue.propTypes = {
     push: PropTypes.func,
   }),
   loadMore: PropTypes.func,
+  isLoadingMore: PropTypes.bool,
 };
 
 Catalogue.defaultProps = {
@@ -81,6 +61,7 @@ Catalogue.defaultProps = {
     push: null,
   },
   loadMore: null,
+  isLoadingMore: false,
 };
 
 export default Catalogue;
