@@ -29,8 +29,7 @@ describe('Schema', () => {
           }
           category
           images {
-            id
-            url
+            fullUrl
           }
         }
       }
@@ -49,33 +48,35 @@ describe('Schema', () => {
   // Tests Catalogue
   it('Allows us to query Catalogue', () => {
     const query = `
-      query CatalogueQuery {
-        catalogue {
+      query GetCatalogue($amount: Int, $offset: Int) {
+        catalogue(amount: $amount, offset: $offset) {
           id
           title
           metaTitle
-          items {
-            id
-            title
-            quantity
-            price {
-              amount
-              currency
-            }
-            category
-            images {
+          product {
+            items {
               id
-              url
+              title
+              quantity
+              price {
+                amount
+                currency
+              }
+              category
+              images {
+                fullUrl
+              }
             }
           }
         }
       }
     `;
 
-    return graphql(schema, query)
+    const params = { amount: 0, offset: 1 };
+    return graphql(schema, query, null, null, params)
       .then(({ data }) => {
         expect(data.catalogue).to.have.all.keys([
-          'id', 'items', 'title', 'metaTitle',
+          'id', 'title', 'metaTitle', 'product',
         ]);
       });
   });
