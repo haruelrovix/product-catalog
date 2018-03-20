@@ -4,7 +4,17 @@ const resolvers = {
   Query: {
     hello: (_, { name }) => `Hello ${name || 'World'}`,
 
-    product: (_, { id }) => catalogue.product.items.find(product => product.id === id),
+    product: (_, { id }) => {
+      const path = id && id.length > 0 && id[0] === '/';
+
+      const result = catalogue.product.items.find(product =>
+        path ?
+          product.slug === id.substr(1) :
+          product.id === id
+      );
+
+      return result ? result : { id, slug: '' };
+    },
 
     catalogue: (_, { amount, offset }) => {
       const begin = amount * offset;
