@@ -13,4 +13,7 @@ export default {
   backButton: {
     marginLeft: 10,
   },
+  loader: {
+    paddingTop: 10,
+  },
 };
