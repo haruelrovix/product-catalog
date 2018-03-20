@@ -7,8 +7,8 @@ module.exports = `
 
   # an image entity
   type Image {
-    id: Int!
-    url: String!
+    # id: Int!
+    fullUrl: String!
     width: Int
     height: Int
   }
@@ -17,24 +17,35 @@ module.exports = `
   type Product {
     id: ID!
     title: String!
+    slug: String!
+    descriptionMarkdown: String!
     quantity: Int!
     price: Price!
     category: String!
     images: [Image]
   }
 
+  # a product list
+  type ProductList {
+    amount: Int! @default(value: 5)
+    offset: Int!
+    total: Int
+    remaining: Int
+    items: [Product]
+  }
+
   # a catalogue contains products
   type Catalogue {
     id: ID!
-    items: [Product]
+    product: ProductList
     title: String!
     metaTitle: String
   }
 
   # query for types
   type Query {
-    # Return a catalogue by their id
-    catalogue(id: ID): Catalogue!
+    # Return a catalogue contains list of product
+    catalogue(amount: Int, offset: Int): Catalogue!
 
     # Return a product by its id
     product(id: ID): Product!

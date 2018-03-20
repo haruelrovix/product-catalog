@@ -7,6 +7,9 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node",
+    "debug": "node --nolazy --inspect-brk=9229 --require babel-register lib/index.js",
+    "lint": "eslint lib mock resolvers schema",
+    "lint:fix": "yarn lint -- --fix",
     "build": "babel lib schema/** -d dist",
     "serve": "yarn && yarn build && node dist/index.js",
     "test": "mocha --require babel-register schema/**/*.spec.js"
@@ -20,8 +23,13 @@
     "graphql-yoga": "^1.6.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
     "graphql": "^0.13.2",
     "graphql-tools": "^2.23.1",
     "mocha": "^5.0.4",
