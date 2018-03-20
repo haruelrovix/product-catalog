@@ -1,3 +1,5 @@
+import raw from './raw';
+
 const dejiesa = {
   id: 'a4488c17-1b8b-40d6-9b4e-ba0ac0fc71ab',
   slug: 'dejiesa-plain-cold-shoulder-mini-dress',
@@ -103,15 +105,17 @@ const galzinsa = {
   ],
 };
 
+const items = [
+  dejiesa,
+  frixza,
+  galzinsa,
+].concat(raw);
+
 const catalogue = {
   id: 'a2e458ad-28b3-11e5-8c52-061c7301af31',
   title: 'Dress',
   metaTitle: 'Baju Dress Gaun Wanita Model Panjang dan Pendek',
-  items: [
-    dejiesa,
-    frixza,
-    galzinsa,
-  ],
+  items,
 };
 
 export default catalogue;
