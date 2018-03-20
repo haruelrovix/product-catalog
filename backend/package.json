@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node",
+    "debug": "node --nolazy --inspect-brk=9229 --require babel-register lib/index.js",
     "lint": "eslint lib mock resolvers schema",
     "lint:fix": "yarn lint -- --fix",
     "build": "babel lib schema/** -d dist",
