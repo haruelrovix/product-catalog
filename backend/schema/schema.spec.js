@@ -1,25 +1,27 @@
-import { graphql } from 'graphql';
-import chai from 'chai';
-import { makeExecutableSchema } from 'graphql-tools';
+const { graphql } = require('graphql');
+const chai = require('chai');
+const { makeExecutableSchema } = require('graphql-tools');
 
-import { typeDefs } from './index';
-import { resolvers } from '../resolvers';
+const { typeDefs } = require('./index');
+const { resolvers } = require('../resolvers');
 
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
 });
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('Schema', () => {
   // Tests Product
   it('Allows us to query Product', () => {
     const query = `
-      query ProductQuery {
-        product {
+      query ProductQuery($id: ID) {
+        product(id: $id) {
           id
           title
+          slug
+          descriptionMarkdown
           quantity
           price {
             amount
@@ -27,17 +29,18 @@ describe('Schema', () => {
           }
           category
           images {
-            id
-            url
+            fullUrl
           }
         }
       }
     `;
 
-    return graphql(schema, query)
+    const params = { id: 'd9d2ba40-a1a9-4377-b3a0-cae50216e8f1' };
+    return graphql(schema, query, null, null, params)
       .then(({ data }) => {
         expect(data.product).to.have.all.keys([
-          'id', 'title', 'category', 'images', 'quantity', 'price'
+          'id', 'title', 'slug', 'descriptionMarkdown',
+          'category', 'images', 'quantity', 'price',
         ]);
       });
   });
@@ -45,33 +48,35 @@ describe('Schema', () => {
   // Tests Catalogue
   it('Allows us to query Catalogue', () => {
     const query = `
-      query CatalogueQuery {
-        catalogue {
+      query GetCatalogue($amount: Int, $offset: Int) {
+        catalogue(amount: $amount, offset: $offset) {
           id
           title
           metaTitle
-          items {
-            id
-            title
-            quantity
-            price {
-              amount
-              currency
-            }
-            category
-            images {
+          product {
+            items {
               id
-              url
+              title
+              quantity
+              price {
+                amount
+                currency
+              }
+              category
+              images {
+                fullUrl
+              }
             }
           }
         }
       }
     `;
 
-    return graphql(schema, query)
+    const params = { amount: 0, offset: 1 };
+    return graphql(schema, query, null, null, params)
       .then(({ data }) => {
         expect(data.catalogue).to.have.all.keys([
-          'id', 'items', 'title', 'metaTitle'
+          'id', 'title', 'metaTitle', 'product',
         ]);
       });
   });

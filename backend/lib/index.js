@@ -11,7 +11,7 @@ const engine = new Engine({
   engineConfig: { apiKey: process.env.APOLLO_ENGINE_KEY },
   endpoint: '/',
   graphqlPort: parseInt(process.env.PORT, 10) || 4000,
-})
+});
 engine.start();
 
 // Enable gzip compression
@@ -21,5 +21,5 @@ server.express.use(engine.expressMiddleware());
 
 server.start({
   tracing: true,
-  cacheControl: true
+  cacheControl: true,
 }, () => console.log(`Server is running on localhost:${process.env.PORT}`));
