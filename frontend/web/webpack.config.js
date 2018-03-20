@@ -97,7 +97,9 @@ module.exports = {
   plugins: plugins,
   resolve: {
     alias: {
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'react-router-native': 'react-router-dom',
+      'FlatList': 'react-native-web-lists/src/FlatList'
     },
     extensions: [".web.js", ".js", ".json"]
   }

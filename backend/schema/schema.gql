@@ -16,12 +16,12 @@ module.exports = `
   # a product entity
   type Product {
     id: ID!
-    title: String!
+    title: String
     slug: String!
-    descriptionMarkdown: String!
-    quantity: Int!
-    price: Price!
-    category: String!
+    descriptionMarkdown: String
+    quantity: Int
+    price: Price
+    category: String
     images: [Image]
   }
 

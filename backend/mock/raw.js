@@ -9216,4 +9216,4 @@ const e = [
 
 const items = a.concat(b, c, d, e);
 
-export default items;
+module.exports = { raw: items };
