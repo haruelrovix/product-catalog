@@ -23,10 +23,14 @@ export default {
     marginLeft: 5,
     marginBottom: 10,
   },
-  price: {
-    color: '#4a4a4a',
+  title: list => ({
+    fontWeight: !list ? 'bold' : 'normal',
+  }),
+  price: list => ({
+    color: !list ? '#d73c3c' : '#4a4a4a',
     letterSpacing: -0.2,
-  },
+    fontWeight: !list ? 'bold' : 'normal',
+  }),
   markdownContainer: {
     borderColor: '#00000050',
     borderTopWidth: StyleSheet.hairlineWidth,
@@ -36,6 +40,6 @@ export default {
   },
   markdown: {
     color: '#4a4a4a',
-    fontSize: '80%',
+    fontSize: Platform.OS === 'web' ? '80%' : 12,
   },
 };

@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import Catalogue from '../../components/catalogue/Catalogue';
+import Loader from '../../components/loader/Loader';
 import styles from './App.styles';
 
 const App = (props) => {
   const { loading, catalogue } = props.data;
   return (
     <View style={styles.container}>
-      {loading && <Text>Loading...</Text>}
+      {
+        loading && <Loader />
+      }
       {
         !loading && catalogue &&
         <Catalogue catalogue={catalogue} {...props} />

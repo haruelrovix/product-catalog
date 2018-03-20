@@ -19,8 +19,8 @@ const Product = ({ item, onPressItem }) => (
       <Image source={{ uri: item.images[0].fullUrl }} style={styles.image} />
     </TouchableOpacity>
     <View style={styles.description}>
-      <Text>{item.title}</Text>
-      <Text style={styles.price}>
+      <Text style={styles.title(onPressItem)}>{item.title}</Text>
+      <Text style={styles.price(onPressItem)}>
         {new Intl.NumberFormat('id-ID').format(item.price.amount)}
       </Text>
     </View>

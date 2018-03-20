@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Platform, Text, TouchableOpacity,
+  ScrollView, View,
+} from 'react-native';
 
+import Loader from '../../components/loader/Loader';
 import Product from '../../components/product/Product';
 import styles from '../app/App.styles';
 
@@ -10,18 +14,22 @@ const renderProduct = product => (
 );
 
 const renderProductWithBackButton = (product, history) => (
-  <View style={{ flexDirection: 'column', marginTop: 20 }}>
+  <ScrollView style={styles.backButtonContainer}>
     <TouchableOpacity onPress={() => history.goBack()}>
-      <Text>Back</Text>
+      <Text style={styles.backButton}>&lt; Back</Text>
     </TouchableOpacity>
     {renderProduct(product)}
-  </View>
+  </ScrollView>
 );
 
 const renderDetailProduct = (product, history) => (
-  Platform.OS === 'web' ?
-    renderProduct(product) :
-    renderProductWithBackButton(product, history)
+  <View>
+    {
+      Platform.OS === 'web' ?
+        renderProduct(product) :
+        renderProductWithBackButton(product, history)
+    }
+  </View>
 );
 
 const DetailProduct = (props) => {
@@ -29,7 +37,7 @@ const DetailProduct = (props) => {
   return (
     <View style={styles.container}>
       {
-        loading && <Text>Loading...</Text>
+        loading && <Loader />
       }
       {
         !loading && product && renderDetailProduct(product, history)
