@@ -17,6 +17,8 @@ module.exports = `
   type Product {
     id: ID!
     title: String!
+    slug: String!
+    descriptionMarkdown: String!
     quantity: Int!
     price: Price!
     category: String!

@@ -10,7 +10,7 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('Schema', () => {
   // Tests Product
@@ -37,7 +37,7 @@ describe('Schema', () => {
     return graphql(schema, query)
       .then(({ data }) => {
         expect(data.product).to.have.all.keys([
-          'id', 'title', 'category', 'images', 'quantity', 'price'
+          'id', 'title', 'category', 'images', 'quantity', 'price',
         ]);
       });
   });
@@ -71,7 +71,7 @@ describe('Schema', () => {
     return graphql(schema, query)
       .then(({ data }) => {
         expect(data.catalogue).to.have.all.keys([
-          'id', 'items', 'title', 'metaTitle'
+          'id', 'items', 'title', 'metaTitle',
         ]);
       });
   });
