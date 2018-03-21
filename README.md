@@ -52,3 +52,11 @@ $ yarn web
 ```sh
 $ yarn ios
 ```
+
+
+## Deployment
+
+Find it Live here:
+
+- GQL Server: https://product-catalog-server-qigcgzbpqh.now.sh
+- Frontend: https://product-catalog-mtmjysfnhy.now.sh
