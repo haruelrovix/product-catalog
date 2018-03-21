@@ -28,19 +28,19 @@ $ docker-compose up
 
 #### The Frontend part
 
-1. Open the `frontend` directory
+1. Open `frontend` directory
 ```sh
 $ cd frontend
 ```
 
-2. Install dependencies
+2. Build the container
 ```sh
-$ yarn
+$ docker-compose build
 ```
 
 3. Run it
 ```sh
-$ yarn web
+$ docker-compose up
 ```
 
 4. Open `localhost:3000`

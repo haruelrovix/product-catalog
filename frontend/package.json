@@ -1,5 +1,5 @@
 {
-	"name": "ExampleApp",
+	"name": "ProductCatalog",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -15,7 +15,7 @@
 		"web:build:vendor": "rm -rf web/vendor; NODE_ENV=production webpack --config web/vendor.webpack.config.js",
 		"web:build:app": "rm -rf web/build; NODE_ENV=production webpack --config web/webpack.config.js",
 		"web:build": "npm run web:build:vendor && npm run web:build:app",
-		"web:serve": "http-serve -p 3001 --gzip true ./web/build"
+		"web:serve": "http-serve -p 3000 --gzip true ./web/build"
 	},
 	"dependencies": {
 		"apollo-cache-inmemory": "^1.1.11",
@@ -46,7 +46,8 @@
 		"redux": "^3.7.2",
 		"redux-devtools-extension": "^2.13.2",
 		"redux-logger": "^3.0.6",
-		"redux-thunk": "^2.2.0"
+		"redux-thunk": "^2.2.0",
+		"zopfli-webpack-plugin": "^0.1.0"
 	},
 	"devDependencies": {
 		"add-asset-html-webpack-plugin": "^2.0.1",
@@ -54,7 +55,6 @@
 		"babel-jest": "19.0.0",
 		"babel-loader": "^7.0.0",
 		"babel-preset-react-native": "1.9.1",
-		"compression-webpack-plugin": "^0.4.0",
 		"copy-webpack-plugin": "^4.0.1",
 		"eslint": "^4.19.0",
 		"eslint-config-airbnb": "^16.1.0",

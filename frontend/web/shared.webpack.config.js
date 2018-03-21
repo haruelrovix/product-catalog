@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path')
 const webpack = require('webpack')
-const CompressionPlugin = require('compression-webpack-plugin')
+const ZopfliPlugin = require('zopfli-webpack-plugin')
 
 module.exports = {
   productionPlugins: [
@@ -22,7 +22,7 @@ module.exports = {
       sourceMap: false,
       exclude: [/\.min\.js$/gi],  // skip pre-minified libs
     }),
-    new CompressionPlugin({
+    new ZopfliPlugin({
       asset: '[path].gz[query]',
       algorithm: 'zopfli',
       test: /\.js$|\.css$|\.html$/,

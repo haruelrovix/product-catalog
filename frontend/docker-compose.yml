@@ -1,0 +1,12 @@
+version: "2"
+services:
+  product-catalog:
+    image: "node:alpine"
+    working_dir: /code
+    environment:
+      - NODE_ENV=production
+    volumes:
+     - ./:/code
+    ports:
+      - "3000:3000"
+    command: "yarn web:serve"
